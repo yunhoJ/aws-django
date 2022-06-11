@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.template import loader
 
 from .models import Question
@@ -19,7 +19,11 @@ def index(request):
 
 
 def detail(request, question_id):
-    return HttpResponse("You're looking at question %s." % question_id)
+    # q=Question.objects.get(pk=question_id) 값을 못받아와 에러 발생 시킴 
+    # 404페이지 띄우기
+    q=get_object_or_404(Question, pk=question_id ) 
+    context = {'question': q}
+    return render(request,"polls/detail.html",context)
 
 def results(request, question_id):
     response = "You're looking at the results of question %s."
