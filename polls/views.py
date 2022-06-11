@@ -4,13 +4,14 @@ from django.template import loader
 
 from .models import Question
 
-
+###### 처음코드 #######
 # def index(request):
 #     latest_question_list = Question.objects.order_by('-pub_date')[:5]
 #     template = loader.get_template('polls/index.html')
 #     context = {'latest_question_list': latest_question_list,}
 #     return HttpResponse(template.render(context, request))
 ##### 간략하게 작성 ######
+
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
