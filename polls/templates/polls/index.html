@@ -11,7 +11,14 @@
     {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        <li>
+            <!-- 하드코딩 url 수정 -->
+            <!-- <a href="/polls/{{ question.id }}/"> -->
+            <!--  url이름 detail이고  사용 변수는 question.id로 부여  -->
+            <a href="{% url 'polls:detail' question.id %}"><!-- 이름 공간이 polls일때 이름 공간이 없으면 'detail'만 사용 -->
+            {{ question.question_text }}
+        </a>
+    </li>
     {% endfor %}
     </ul>
 {% else %}
