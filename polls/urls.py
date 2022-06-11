@@ -1,6 +1,9 @@
 from django.urls import path
 from polls import views
 
+#url의 이름 공간 정하기  비슷한 이름으로 묶음 
+app_name='polls'
+
 urlpatterns=[
     # ex: /polls/
     path('', views.index, name='index'),
